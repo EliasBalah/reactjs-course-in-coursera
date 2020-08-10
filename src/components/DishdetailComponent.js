@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody,
+import React from 'react';
+import { Card, CardImg, CardText, CardBody,
     CardTitle } from 'reactstrap';
 
-function RenderDish({dish}) {
+function RenderDish(dish) {
     if (dish != null)
         return(
             <div className="col-12 col-md-5 m-1">
-            <Card>
-                <CardImg width="100%" top src={dish.image} alt={dish.name} />
-                <CardBody>
-                    <CardTitle>{dish.name}</CardTitle>
-                    <CardText>{dish.description}</CardText>
-                </CardBody>
-            </Card>
+                <Card>
+                    <CardImg width="100%" top src={dish.image} alt={dish.name} />
+                    <CardBody>
+                        <CardTitle>{dish.name}</CardTitle>
+                        <CardText>{dish.description}</CardText>
+                    </CardBody>
+                </Card>
             </div>
             
         );
@@ -22,10 +22,10 @@ function RenderDish({dish}) {
         );
 }
 
-function RenderComments({comments}){
+function RenderComments(comments){
     if(comments != null) 
     {
-        const commentListItem = comments.map( (comment)=>{
+        const commentListItem = comments.map((comment)=>{
             return(
                 <li key={comment.id}>
                 <p>{comment.comment}</p>
@@ -37,7 +37,7 @@ function RenderComments({comments}){
             <div className="col-12 col-md-5 m-1">
                 <h4>Comments</h4>
                 <ul className="list-unstyled">
-                {commentListItem}
+                    {commentListItem}
                 </ul>
             </div>
         );
@@ -50,11 +50,13 @@ function RenderComments({comments}){
 }
 
 const DishDetail = (props) => {
-    if(this.props.dish != null) {
+    if(props.dish != null) {
         return(
-            <div className="row">
-                {this.renderDish(this.props.dish)}
-                {this.renderComments(this.props.dish.comments)}
+            <div className='container'>
+                <div className="row">
+                    {RenderDish(props.dish)}
+                    {RenderComments(props.dish.comments)}
+                </div>
             </div>
 
         );

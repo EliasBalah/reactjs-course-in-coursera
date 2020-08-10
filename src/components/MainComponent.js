@@ -12,6 +12,7 @@ class Main extends Component {
         dishes: DISHES,
         selectedDish: null
     };
+    this.onDishSelect = this.onDishSelect.bind(this);
   }
 
   onDishSelect(dishId) {
